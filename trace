@@ -1,0 +1,98 @@
+public class FibonacciTrace {
+
+	public static void main(String[] args) {
+		//終了の文字列を設定
+		final String  break1 = "exit";
+		final String  break2 = "quit";
+
+		while(true) {
+
+			//標準入力せずに改行の場合のエラーキャッチ
+			try {
+
+				var scanner = new java.util.Scanner(System.in);
+				String obj = scanner.nextLine();
+
+				//整数じゃなかった場合のエラーキャッチ
+				try {
+
+					int num = Integer.parseInt(obj);
+
+
+					if (num <1) {
+						System.out.println("1~70までの整数を入力して下さい。「exit」もしくは「quit」で終了します。");
+					}else {if(num >70) {
+						System.out.println("1~70までの整数を入力して下さい。「exit」もしくは「quit」で終了します。");
+					}else {
+						System.out.print(num + "番目のフィボナッチ数：");
+
+						//N番目フィボナッチ数の計算
+						int ber = num -1;
+
+						double fn,tm1,tm2,tm3,tm4,tm5;
+
+						tm1 = 1/Math.sqrt(5);
+
+						tm2 = (1+Math.sqrt(5))/2;
+
+						tm3 = (1-Math.sqrt(5))/2;
+
+						tm4 = Math.pow(tm2,ber);
+
+						tm5 = Math.pow(tm3,ber);
+
+						fn = tm1*(tm4-tm5);
+
+						System.out.println(String.format("%.0f",fn));
+
+
+						System.out.print(num + "番目までのフィボナッチ数列：");
+
+						//フィボナッチ数列の計算
+						for(int i = 0;i < num; i++) {
+
+							tm1 = 1/Math.sqrt(5);
+
+							tm2 = (1+Math.sqrt(5))/2;
+
+							tm3 = (1-Math.sqrt(5))/2;
+
+							tm4 = Math.pow(tm2,i);
+
+							tm5 = Math.pow(tm3,i);
+							
+
+							fn = tm1*(tm4-tm5);
+
+							System.out.print(String.format("%.0f",fn));
+							System.out.print(" ");
+						}
+
+						System.out.println();
+
+					}
+					}
+
+				//整数じゃなかった場合のエラーキャッチ
+				}catch(Exception e) {
+					if(obj.equals(break1)) {
+						break;
+					}else {if(obj.equals(break2)) {
+						break;
+					}else {
+						System.out.println("1~70までの整数を入力して下さい。「exit」もしくは「quit」で終了します。");
+					}
+					}
+
+				}
+			//標準入力せずに改行の場合のエラーキャッチ
+			}catch(Exception e){
+				System.out.println("1~70までの整数を入力して下さい。「exit」もしくは「quit」で終了します。");
+			}
+
+		}
+
+
+	}
+
+}
